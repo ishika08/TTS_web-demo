@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Data Augmentation for Conversational Speech using HTS synthetic voices</title>
+		<meta name="viewport" content="width=device-width" />
+		<link rel="stylesheet" type="text/css" href="css/pcTest.css">
+	</head>
+	<body>
+		<div class="header">
+			<div class="logo-container">
+				<img class='iitm-logo' src="img/iitm-logo.jpg"/>
+			</div>
+			<div class="page-title" >
+				<div class= "page-title-main">
+					Data Augmentation using HTS voices
+				</div>
+				<div class= "page-title-sub above-640">
+						Department of Computer Science and Engineering, IIT Madras
+ 					<br>
+				</div>
+				<div class= "page-title-sub below-640">
+						Department of CSE, IIT Madras
+				</div>
+			</div>
+    
+		</div>
+		<div class="content">
+			<div class="instructions">
+				 Title of the paper: <b> E-TTS: Expressive text-to-speech synthesis for Hindi using Data Augmentation </b>
+				<br>(Communicated to SPECOM 2023)
+				<br>
+				<br>
+				<br>
+
+	<h2> System Description (For Hindi Dataset)</h2>
+ 			<p align="left">
+			<br><b>System 1:</b> HMM-based TTS System trained on read-speech	
+			<br><b>System 2:</b> FastSpeech2 TTS System trained on read-speech (Baseline)	
+			<br><b>System 3:</b> FastSpeech2 trained on synthetic FS2 augmented multi-domain speech (S1)
+			<br><b>System 4:</b> FastSpeech2 trained on synthetic FS2 augmented multi-domain speech fine-tuned on 11 minutes of prosodically-rich speech (Proposed 1 - S2)
+			<br><b>System 5:</b> FastSpeech2 trained on synthetic HTS augmented multi-domain speech (H1)
+			<br><b>System 6:</b> FastSpeech2 trained on synthetic HTS augmented multi-domain speech fine-tuned on 11 minutes of prosodically-rich speech (Proposed 2 - H2)
+			</p>
+					
+		<!-- <div class="left-align">In a country like India, which has a diverse linguistic culture, code-switching is very common. Fluency in
+multiple languages brings in code-switching sub-consciously. Many of the daily-used words in native languages
+have been replaced by their English counterparts (such as fan, switch, light, train, etc.). Further, in the current
+scenario, one is surrounded by people of different linguistic backgrounds. This results in borrowing of words from
+other languages into one's vocabulary. Conversational speech may include sentences, each of which is a mixture
+of words from different languages, or a mixture of sentences from different languages. Such a scenario calls
+for the inclusion of code-switching ability in current TTS systems to produce natural sounding speech. These
+systems should be capable of synthesising code-switched sentences that preserve the original pronunciation of
+the words while maintaining the accent of the speaker.</span>
+			</div> -->
+<br>
+<br>
+		<h2> Video transcreation of a NPTEL lecture in English to Hindi using isochronous lip-syncing (Male voice)</h2>	
+<div class="video-container">
+  <video controls>
+    <source src="cloud_computing_base.mp4" type="video/mp4">
+    
+    Your browser does not support the video tag.
+  </video>
+  <video controls>
+    <source src="cloud_computing_proposed.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+</div>
+<br>
+<text>The above videos are transcreated in Hindi where audios are synthesized using audios from baseline system 2 (left) and proposed system 6 (right) male voice </text>
+
+				<br>
+				<br>
+				<br>
+			
+
+<br>
+<br>
+		<h2> Video transcreation of a NPTEL lecture in English to Hindi using isochronous lip-syncing (Female voice)</h2>	
+<div class="video-container">
+  <video controls>
+    <source src="speech_lec_baseFS2.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+  <video controls>
+    <source src="speech_lec_proposed.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+</div>
+<br>
+<text>The above videos are transcreated in Hindi where audios are synthesized using audios from baseline system 2 (left) and proposed system 6 (right) female voice </text>
+
+<!--
+
+			<p class="centeralign"><b> <u>	Experiment 1 : Analysis of improvement in prosody of synthesized audios across different versions of TTS  </u></b></p>
+			<br>
+			<br>
+			<table class="demo-table">
+
+				<tr>
+				    <th rowspan=2>Samples</th>
+				    <th colspan="6" class="centeralign">TTS System Versions</th>
+				</tr>
+			  <tr>
+				    <th>System 1</th>
+				    <th>System 2</th>
+				    <th>System 3</th>
+				    <th>System 4</th>	
+				    <th>System 5</th>	
+				    <th>System 6</th>			    
+			  </tr>
+			  
+			  <tr>
+			  		<td class="type">
+				    	Sample 1 
+				    	
+				    </td>
+			  		<td>
+				    	<a onclick="closeAllAudio();this.firstChild.play()"><audio><source src="audio_files/prosody-change/test_002_sys1.wav"></audio><img  width="30" alt="" src="img/audio.png" height="30"></a>
+				    </td>
+				    <td>
+				    	<a onclick="closeAllAudio();this.firstChild.play()"><audio><source src="audio_files/prosody-change/test_002_sys2.wav"></audio><img width="30" alt="" src="img/audio.png" height="30"></a>
+				    </td>
+				      <td>
+				    	<a onclick="closeAllAudio();this.firstChild.play()"><audio><source src="audio_files/prosody-change/test_002_sys3.wav"></audio><img width="30" alt="" src="img/audio.png" height="30"></a>
+				    </td>
+				      <td>
+				    	<a onclick="closeAllAudio();this.firstChild.play()"><audio><source src="audio_files/prosody-change/test_002_sys4.wav"></audio><img width="30" alt="" src="img/audio.png" height="30"></a>
+				    </td>
+				     <td>
+				    	<a onclick="closeAllAudio();this.firstChild.play()"><audio><source src="audio_files/prosody-change/test_002_sys5.wav"></audio><img width="30" alt="" src="img/audio.png" height="30"></a>
+				    </td>
+				     <td>
+				    	<a onclick="closeAllAudio();this.firstChild.play()"><audio><source src="audio_files/prosody-change/test_002_sys5.wav"></audio><img width="30" alt="" src="img/audio.png" height="30"></a>
+				    </td>
+
+				    							    
+			  </tr>
+			  <tr>
+			  		<td class="type">
+				    	Sample 2 
+				    	
+				    </td>
+			  		<td>
+				    	<a onclick="closeAllAudio();this.firstChild.play()"><audio><source src="audio_files/prosody-change/test_003_sys1.wav"></audio><img  width="30" alt="" src="img/audio.png" height="30"></a>
+				    </td>
+				    <td>
+				    	<a onclick="closeAllAudio();this.firstChild.play()"><audio><source src="audio_files/prosody-change/test_003_sys2.wav"></audio><img width="30" alt="" src="img/audio.png" height="30"></a>
+				    </td>
+				    <td>
+				    	<a onclick="closeAllAudio();this.firstChild.play()"><audio><source src="audio_files/prosody-change/test_003_sys3.wav"></audio><img width="30" alt="" src="img/audio.png" height="30"></a>
+				    </td>
+
+			            <td>
+				    	<a onclick="closeAllAudio();this.firstChild.play()"><audio><source src="audio_files/prosody-change/test_003_sys4.wav"></audio><img width="30" alt="" src="img/audio.png" height="30"></a>
+				    </td>
+				    <td>
+				    	<a onclick="closeAllAudio();this.firstChild.play()"><audio><source src="audio_files/prosody-change/test_003_sys5.wav"></audio><img width="30" alt="" src="img/audio.png" height="30"></a>
+				    </td>
+				    <td>
+				    	<a onclick="closeAllAudio();this.firstChild.play()"><audio><source src="audio_files/prosody-change/test_003_sys5.wav"></audio><img width="30" alt="" src="img/audio.png" height="30"></a>
+				    </td>
+				    						    
+			  </tr>
+			  <tr>
+			  		<td class="type">
+				    	Sample 3 
+				    	
+				    </td>
+			  		<td>
+				    	<a onclick="closeAllAudio();this.firstChild.play()"><audio><source src="audio_files/prosody-change/test_004_sys1.wav"></audio><img  width="30" alt="" src="img/audio.png" height="30"></a>
+				    </td>
+				    <td>
+				    	<a onclick="closeAllAudio();this.firstChild.play()"><audio><source src="audio_files/prosody-change/test_004_sys2.wav"></audio><img width="30" alt="" src="img/audio.png" height="30"></a>
+				    </td>
+				      <td>
+				    	<a onclick="closeAllAudio();this.firstChild.play()"><audio><source src="audio_files/prosody-change/test_004_sys3.wav"></audio><img width="30" alt="" src="img/audio.png" height="30"></a>
+				    </td>
+				    <td>
+				    	<a onclick="closeAllAudio();this.firstChild.play()"><audio><source src="audio_files/prosody-change/test_004_sys4.wav"></audio><img width="30" alt="" src="img/audio.png" height="30"></a>
+				    </td>
+				    <td>
+				    	<a onclick="closeAllAudio();this.firstChild.play()"><audio><source src="audio_files/prosody-change/test_004_sys5.wav"></audio><img width="30" alt="" src="img/audio.png" height="30"></a>
+				    </td>
+				    <td>
+				    	<a onclick="closeAllAudio();this.firstChild.play()"><audio><source src="audio_files/prosody-change/test_004_sys5.wav"></audio><img width="30" alt="" src="img/audio.png" height="30"></a>
+				    </td>
+				    	
+				    						    
+			  </tr>
+			  <tr>
+			  		<td class="type">
+				    	Sample 4 
+				    	
+				    </td>
+			  		<td>
+				    	<a onclick="closeAllAudio();this.firstChild.play()"><audio><source src="audio_files/prosody-change/test_005_sys1.wav"></audio><img  width="30" alt="" src="img/audio.png" height="30"></a>
+				    </td>
+				    <td>
+				    	<a onclick="closeAllAudio();this.firstChild.play()"><audio><source src="audio_files/prosody-change/test_005_sys2.wav"></audio><img width="30" alt="" src="img/audio.png" height="30"></a>
+				    </td>
+				      <td>
+				    	<a onclick="closeAllAudio();this.firstChild.play()"><audio><source src="audio_files/prosody-change/test_005_sys3.wav"></audio><img width="30" alt="" src="img/audio.png" height="30"></a>
+				    </td>
+                                      <td>
+				    	<a onclick="closeAllAudio();this.firstChild.play()"><audio><source src="audio_files/prosody-change/test_005_sys4.wav"></audio><img width="30" alt="" src="img/audio.png" height="30"></a>
+				    </td>
+				      <td>
+				    	<a onclick="closeAllAudio();this.firstChild.play()"><audio><source src="audio_files/prosody-change/test_005_sys5.wav"></audio><img width="30" alt="" src="img/audio.png" height="30"></a>
+				    </td>
+				    <td>
+				    	<a onclick="closeAllAudio();this.firstChild.play()"><audio><source src="audio_files/prosody-change/test_005_sys5.wav"></audio><img width="30" alt="" src="img/audio.png" height="30"></a>
+				    </td>
+				    								    
+			  </tr>
+
+			             
+			  <tr>
+<			  		<td class="type">  
+				    	Sample 5 
+				  
+				    </td>
+			  		<td>
+				    	<a onclick="closeAllAudio();this.firstChild.play()"><audio><source src="audio_files/prosody-change/ampli_new//source_05.wav"></audio><img  width="30" alt="" src="img/audio.png" height="30"></a>
+				    </td>
+				    <td>
+				    	<a onclick="closeAllAudio();this.firstChild.play()"><audio><source src="audio_files/prosody-change/ampli_new//orig_18.wav"></audio><img width="30" alt="" src="img/audio.png" height="30"></a>
+				    </td>
+				      <td>
+				    	<a onclick="closeAllAudio();this.firstChild.play()"><audio><source src="audio_files/prosody-change/ampli_new//target_18.wav"></audio><img width="30" alt="" src="img/audio.png" height="30"></a>
+				    </td>
+				    	
+				    							    
+			  </tr> 
+			</table>
+			<br>
+		
+			<br>
+			<br>
+			<br>
+
+
+			<br>	
+			<br>
+			<br>
+
+
+			<p class="centeralign"><b> <u>	Experiment 4 - Analysis of improvement in mispronunciations in synthesized audios across different versions of TTS</u></b></p>
+			<br>
+			<br>
+			<table class="demo-table">
+				 <tr>
+				    <th rowspan=2>Samples</th>
+				    <th colspan="4" class="centeralign">TTS System Versions</th>
+				</tr>
+			  <tr>
+			            <th>System 2</th>
+				    <th>System 3</th>
+				    <th>System 4</th>
+				    <th>System 6 <br> (Proposed)</th>
+			
+			
+			  </tr>
+			  
+			  <tr>
+			  		<td class="type">
+				    	Sample 1
+				    
+				    </td>
+	
+			  		<td>
+				    	<a onclick="closeAllAudio();this.firstChild.play()"><audio><source src="audio_files/mispronunciations/ampli_new/male_hi_T5_bio_0150_system2.wav"></audio><img  width="30" alt="" src="img/audio.png" height="30"></a>
+				    </td>
+				    <td>
+				    	<a onclick="closeAllAudio();this.firstChild.play()"><audio><source src="audio_files/mispronunciations/ampli_new/male_hi_T5_bio_0150_system3.wav"></audio><img width="30" alt="" src="img/audio.png" height="30"></a>
+				    </td>	
+				    <td>
+				    	<a onclick="closeAllAudio();this.firstChild.play()"><audio><source src="audio_files/mispronunciations/ampli_new/male_hi_T5_bio_0150_system4.wav"></audio><img width="30" alt="" src="img/audio.png" height="30"></a>
+				    </td>
+				    <td>
+				    	<a onclick="closeAllAudio();this.firstChild.play()"><audio><source src="audio_files/mispronunciations/ampli_new/male_hi_T5_bio_0150_system5.wav"></audio><img width="30" alt="" src="img/audio.png" height="30"></a>
+				    </td>	
+
+			  </tr>
+			   <tr>
+			  		<td class="type">
+				    	Sample 2
+				    	
+				    </td>
+			  		 <td>
+				    	<a onclick="closeAllAudio();this.firstChild.play()"><audio><source src="audio_files/mispronunciations/ampli_new/male_hi_T5_bio_0110_system2.wav"></audio><img width="30" alt="" src="img/audio.png" height="30"></a>
+				    </td>	
+			  		<td>
+				    	<a onclick="closeAllAudio();this.firstChild.play()"><audio><source src="audio_files/mispronunciations/ampli_new/male_hi_T5_bio_0110_system3.wav"></audio><img  width="30" alt="" src="img/audio.png" height="30"></a>
+				    </td>
+				    <td>
+				    	<a onclick="closeAllAudio();this.firstChild.play()"><audio><source src="audio_files/mispronunciations/ampli_new/male_hi_T5_bio_0110_system4.wav"></audio><img width="30" alt="" src="img/audio.png" height="30"></a>
+				    </td>	   	
+				    <td>
+				    	<a onclick="closeAllAudio();this.firstChild.play()"><audio><source src="audio_files/mispronunciations/ampli_new/male_hi_T5_bio_0110_system5.wav"></audio><img width="30" alt="" src="img/audio.png" height="30"></a>
+				    </td>			    
+			  </tr>
+
+			  <tr>
+			  		<td class="type">
+				    	Sample 3
+				    
+				    </td>
+	
+			  		<td>
+				    	<a onclick="closeAllAudio();this.firstChild.play()"><audio><source src="audio_files/mispronunciations/ampli_new/male_hi_T5_bio_0097_system2.wav"></audio><img  width="30" alt="" src="img/audio.png" height="30"></a>
+				    </td>
+				    <td>
+				    	<a onclick="closeAllAudio();this.firstChild.play()"><audio><source src="audio_files/mispronunciations/ampli_new/male_hi_T5_bio_0097_system3.wav"></audio><img width="30" alt="" src="img/audio.png" height="30"></a>
+				    </td>	
+				    <td>
+				    	<a onclick="closeAllAudio();this.firstChild.play()"><audio><source src="audio_files/mispronunciations/ampli_new/male_hi_T5_bio_0097_system4.wav"></audio><img width="30" alt="" src="img/audio.png" height="30"></a>
+				    </td>
+				    <td>
+				    	<a onclick="closeAllAudio();this.firstChild.play()"><audio><source src="audio_files/mispronunciations/ampli_new/male_hi_T5_bio_0097_system5.wav"></audio><img width="30" alt="" src="img/audio.png" height="30"></a>
+				    </td>	
+
+			  </tr>
+
+			  <tr>
+			  		<td class="type">
+				    	Sample 4
+				    
+				    </td>
+	
+			  		<td>
+				    	<a onclick="closeAllAudio();this.firstChild.play()"><audio><source src="audio_files/mispronunciations/ampli_new/male_hi_T5_bio_0030_system2.wav"></audio><img  width="30" alt="" src="img/audio.png" height="30"></a>
+				    </td>
+				    <td>
+				    	<a onclick="closeAllAudio();this.firstChild.play()"><audio><source src="audio_files/mispronunciations/ampli_new/male_hi_T5_bio_0030_system3.wav"></audio><img width="30" alt="" src="img/audio.png" height="30"></a>
+				    </td>	
+				    <td>
+				    	<a onclick="closeAllAudio();this.firstChild.play()"><audio><source src="audio_files/mispronunciations/ampli_new/male_hi_T5_bio_0030_system4.wav"></audio><img width="30" alt="" src="img/audio.png" height="30"></a>
+				    </td>
+				    <td>
+				    	<a onclick="closeAllAudio();this.firstChild.play()"><audio><source src="audio_files/mispronunciations/ampli_new/male_hi_T5_bio_0030_system5.wav"></audio><img width="30" alt="" src="img/audio.png" height="30"></a>
+				    </td>	
+
+			  </tr>
+			</table>
+
+<br>
+<br>
+
+ <a href="index_tamil.html">Please click here to check Tamil samples</a> 
+			
+		</div> -->
+		<div class="footer">
+		</div>
+		<script src="js/jquery-2.1.4.min.js"></script>
+		<script src="js/code.js"></script>
+		
+	</body>
+</html>
